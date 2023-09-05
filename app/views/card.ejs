@@ -2,20 +2,45 @@
 
 <h1><%= title %></h1>
 
-<div class="card">
-    <img
-      src="/visuals/<%= card.visual_name %>"
-      alt="<%= card.name %> illustration"
-    />
-    <p class="card__name">Nom : <%= card.name %></p>
-    <p class="card__element">Element :<%= card.element %></p>
-    <p class="card__level">Niveau :<%= card.level %></p> 
-    <p class="card__north">Nord : <%= card.value_north %></p>
-    <p class="card__east">Est : <%= card.value_east %></p>
-    <p class="card__south">Sud : <%= card.value_south %></p>
-    <p class="card__west">Ouest : <%= card.value_west %></p>
+<div class="container">
+  <div class="infos__wrapper wrapper">
+    <div class="img__wrapper wrapper">
+      <img
+        src="/visuals/<%= card.visual_name %>"
+        alt="<%= card.name %> illustration"
+      />
+    </div>
+    <p class="card__value card__value--name">
+      <span><%= card.name %></span>
+    </p>
+    <p class="card__value card__value--element">
+      ELEMENT : <span><%= card.element %></span>
+    </p>
+    <p class="card__value card__value--level">
+      NIVEAU : <span><%= card.level %></span>
+    </p>
+    <p class="card__value card__value--north">
+      VALEUR NORD : <span><%= card.value_north %></span>
+    </p>
+    <p class="card__value card__value--east">
+      VALEUR EST : <span><%= card.value_east %></span>
+    </p>
+    <p class="card__value card__value--south">
+      VALEUR SUD : <span><%= card.value_south %></span>
+    </p>
+    <p class="card__value card__value--west">
+      VALEUR OUEST : <span><%= card.value_west %></span>
+    </p>
 
-  <a class="link--addCard" title="Ajouter au deck" href="/deck/add/<%= card.id %>">[ + ]</a>
+    <div class="wrapper">
+      <a
+        class="button__add plus radius"
+        title="Ajouter au deck"
+        href="/deck/add/<%= card.id %>"
+      >
+      </a>
+    </div>
+  </div>
 </div>
 
 <%- include('footer') %>

@@ -6,7 +6,7 @@ const mainController = {
 
     try {
       const cards = await dataMapper.getCardsList();
-      res.render("cardList", {
+      res.render("cardsList", {
         cards,
         title: "Liste des cartes",
         errorMessage: error,

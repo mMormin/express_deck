@@ -2,22 +2,23 @@
 
 <h1><%= title %></h1>
 
-<div class="cardsContainer">
+<div class="deck__container container">
   <% if (!deck.length) { %>
 
-  <p>Aucune carte n'est encore présente dans ton Deck !</p>
+  <p class="error error--emptydeck">Aucune carte n'est encore présente dans ton Deck !</p>
 
-  <% } else { %>
-    <% for (const card of deck) { %>
-  <div class="card">
-    <a href="/card/<%= card.name %>">
-      <img
-        src="/visuals/<%= card.visual_name %>"
-        alt="<%= card.name %> illustration"
-      />
-      <p class="cardName"><%= card.name %></p>
-    </a>
-    <a class="link--addCard" href="/deck/delete/<%= card.id %>">[ - ]</a>
+  <% } else { %> <% for (const card of deck) { %>
+  <div class="card__wrapper">
+    <div class="card">
+      <a href="/card/<%= card.name %>">
+        <img
+          src="/visuals/<%= card.visual_name %>"
+          alt="<%= card.name %> illustration"
+        />
+        <p class="card__infos--name"><%= card.name %></p>
+      </a>
+    </div>
+    <a class="button__remove" href="/deck/delete/<%= card.id %>"></a>
   </div>
 
   <% }} %>

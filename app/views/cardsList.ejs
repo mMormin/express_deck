@@ -2,12 +2,12 @@
 
 <h1><%= title %></h1>
 <% if (errorMessage == "deck_full") { %>
-<p>Votre Deck est déjà complet (5 cartes sur 5) !</p>
+<p class="error">Votre Deck est déjà complet (5 cartes sur 5) !</p>
 <% } else if (errorMessage == "already_in_deck") { %>
-<p>Cette carte fait déjà partie de votre Deck !</p>
+<p class="error error--alrdyIn">Cette carte fait déjà partie de votre Deck !</p>
 <% } %>
 
-<div class="cardsContainer">
+<div class="cards__container container">
   <% cards.forEach( (card) => { %>
 
   <div class="card">
@@ -16,14 +16,7 @@
         src="/visuals/<%= card.visual_name %>"
         alt="<%= card.name %> illustration"
       />
-      <p class="cardName"><%= card.name %></p>
-    </a>
-    <a
-      class="link--addCard"
-      title="Ajouter au deck"
-      href="/deck/add/<%= card.id %>"
-    >
-      [ + ]
+      <p class="card__infos--name"><%= card.name %></p>
     </a>
   </div>
 
