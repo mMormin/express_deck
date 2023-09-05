@@ -1,0 +1,26 @@
+<%- include('header') %>
+
+<h1><%= title %></h1>
+
+<div class="cardsContainer">
+  <% if (!deck.length) { %>
+
+  <p>Aucune carte n'est encore présente dans ton Deck !</p>
+
+  <% } else { %>
+    <% for (const card of deck) { %>
+  <div class="card">
+    <a href="/<%= card.name %>/<%= card.id %>">
+      <img
+        src="/visuals/<%= card.visual_name %>"
+        alt="<%= card.name %> illustration"
+      />
+      <p class="cardName"><%= card.name %></p>
+    </a>
+    <a class="link--addCard" href="/deck/delete/<%= card.id %>">[ - ]</a>
+  </div>
+
+  <% }} %>
+</div>
+
+<%- include('footer') %>
