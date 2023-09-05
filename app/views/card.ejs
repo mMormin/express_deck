@@ -15,7 +15,7 @@
     <p class="card__south">Sud : <%= card.value_south %></p>
     <p class="card__west">Ouest : <%= card.value_west %></p>
 
-  <a class="link--addCard" title="Ajouter au deck" href="/add-card">[ + ]</a>
+  <a class="link--addCard" title="Ajouter au deck" href="/deck/add/<%= card.id %>">[ + ]</a>
 </div>
 
 <%- include('footer') %>

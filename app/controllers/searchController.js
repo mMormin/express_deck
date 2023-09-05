@@ -6,15 +6,26 @@ const searchController = {
   },
 
   resultPage: async (req, res, next) => {
-    const { element } = req.query;
+    const { element, level, direction, value, name } = req.query;
 
-    console.log(element.value)
     try {
+      if (element) {
+        const cards = await dataMapper.getCardsListByElement(element);
 
+        res.render("result", { title: "Résultat de recherche :", cards });
+      } else if (level) {
+        const cards = await dataMapper.getCardsListByLevel(level);
 
-      res
-        .status(200)
-        .render("result");
+        res.render("result", { title: "Résultat de recherche :", cards });
+      } else if (direction) {
+        const cards = await dataMapper.getCardsListByValue(direction, value);
+
+        res.render("result", { title: "Résultat de recherche :", cards });
+      } else if (name) {
+        const cards = await dataMapper.getCardsListByName(name);
+
+        res.render("result", { title: "Résultat de recherche :", cards });
+      }
     } catch (error) {
       console.error(error);
       res.status(404).send(`${error.message}`);

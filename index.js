@@ -1,16 +1,15 @@
-const dotenv = require('dotenv');
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
 const session = require("express-session");
-dotenv.config();
-
-const router = require('./app/router');
+const router = require("./app/router");
 
 const app = express();
+const PORT = process.env.PORT || 1234;
 
-app.set('view engine', 'ejs');
-app.set('views', 'app/views');
+app.set("view engine", "ejs");
+app.set("views", "app/views");
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 app.use(
   session({
@@ -23,14 +22,13 @@ app.use(
 
 app.use((req, res, next) => {
   if (!req.session.deck) {
-    req.session.deck = []
+    req.session.deck = [];
   }
-  next()
-})
+  next();
+});
 
 app.use(router);
 
-const PORT = process.env.PORT || 1234;
 app.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}`);
 });
