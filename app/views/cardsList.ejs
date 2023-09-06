@@ -1,11 +1,8 @@
-<%- include('header') %>
+<%- include('partials/header') %>
 
 <h1><%= title %></h1>
-<% if (errorMessage == "deck_full") { %>
-<p class="error">Votre Deck est déjà complet (5 cartes sur 5) !</p>
-<% } else if (errorMessage == "already_in_deck") { %>
-<p class="error error--alrdyIn">Cette carte fait déjà partie de votre Deck !</p>
-<% } %>
+
+<%- include('partials/error') %>
 
 <div class="cards__container container">
   <% cards.forEach( (card) => { %>
@@ -23,4 +20,4 @@
   <% }) %>
 </div>
 
-<%- include('footer') %>
+<%- include('partials/footer') %>

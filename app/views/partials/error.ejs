@@ -1,0 +1,19 @@
+<% switch(errorMessage) { case "deck_full" : %>
+<p class="error error--deckfull">
+  Votre Deck est déjà complet (5 cartes sur 5) !
+</p>
+<% break; case "already_in_deck" : %>
+<p class="error error--alrdyindeck">
+  Cette carte fait déjà partie de votre Deck !
+</p>
+<% break; case "empty_deck" : %>
+<p class="error error--emptydeck">
+  Aucune carte n'est encore présente dans ton Deck !
+</p>
+<a class="button button__home" href="/">en ajouter</a>
+<% break; case "404": %>
+<p class="error error--404">
+  La chose que vous recherchez se trouve peut-être quelque part<br />mais elle
+  n'est pas ici . . .
+</p>
+<% break; } %>

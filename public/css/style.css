@@ -1,3 +1,9 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   background-color: purple;
   display: flex;
@@ -36,7 +42,8 @@
 }
 
 .main {
-  margin-top: 85px;
+  padding-top: 85px;
+  flex-grow: 1;
 }
 
 h1 {
@@ -56,6 +63,12 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.wrapper--center {
+  flex-direction: column;
+  height: 100%;
+  padding-top: 20vh;
 }
 
 .container {
@@ -119,7 +132,6 @@ img {
 }
 
 form {
-  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -128,6 +140,13 @@ form {
   height: 35px;
   padding-left: 10px;
   min-width: 20%;
+  border: 2px solid rgb(70, 70, 70);
+  border-radius: 3.6px;
+}
+
+.form__field:focus-visible {
+  border: 2px solid purple;
+  outline: inherit;
 }
 
 .card__value {
@@ -168,6 +187,17 @@ form {
   margin-bottom: 2rem;
 }
 
+.button {
+  height: 50px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 0;
+  width: 100%;
+  margin-top: 1rem;
+}
+
 .button__add {
   font-weight: 900;
   text-decoration: none;
@@ -194,17 +224,21 @@ form {
   border-radius: 50%;
 }
 
-.button__submit {
-  height: 50px;
+.button__home {
   background-color: #36a769;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
-  border: 0;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-top: 1rem;
+  text-decoration: none;
+  margin-top: 2rem;
+  line-height: 1.2rem;
+}
+
+.button__submit {
+  background-color: #36a769;
+  color: white;
 }
 
 .button__add--onCard {
@@ -216,7 +250,8 @@ form {
   width: 100%;
 }
 
-.error--alrdyIn {
+.error--alrdyindeck,
+.error--deckfull {
   color: #ef2a44;
   font-weight: bold;
   position: fixed;
@@ -224,7 +259,12 @@ form {
   padding: 1rem 0;
   z-index: 1;
   bottom: 0;
+  left: 0;
   backdrop-filter: blur(5px);
+}
+
+.error--404 {
+  margin-top: 2rem;
 }
 
 .footer {
@@ -233,6 +273,9 @@ form {
   height: 48px;
   background: black;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -253,11 +296,10 @@ form {
   .header nav a:hover {
     text-decoration: underline;
   }
-  
+
   .main {
     width: 80%;
-    margin: 110px auto 0 auto;
-    min-height: calc(100vh - 158px);
+    margin: 0 auto;
   }
 
   img {
@@ -281,9 +323,21 @@ form {
     padding: 3rem 2rem 0 2rem;
   }
 
-  .button__submit {
+  .button {
     width: 160px;
-    margin: 0;
+    cursor: pointer;
+    transition: ease-out border background-color box-shadow 0.5s;
+    border: 2px solid #36a769;
+  }
+
+  .button:hover {
+    box-shadow: inherit;
+    transition: ease-in border background-color box-shadow 0.2s;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    background-color: white;
+    color: #36a769;
+    border: 2px solid #36a769;
   }
 
   .form__container {
@@ -313,7 +367,7 @@ form {
   .form__wrapper label {
     margin-right: 1rem;
   }
-  
+
   .infos__wrapper {
     justify-content: space-around;
     width: 100%;
@@ -343,11 +397,5 @@ form {
     position: absolute;
     bottom: -80px;
     left: 9.5vw;
-  }
-
-  .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }

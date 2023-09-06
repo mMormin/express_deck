@@ -1,3 +1,4 @@
+const e = require("express");
 const dataMapper = require("../dataMapper.js");
 
 const mainController = {
@@ -34,8 +35,18 @@ const mainController = {
     }
   },
 
+  errorPage: (req, res) => {
+    res.render("404", { errorMessage: "404" });
+  },
+
   deckList: (req, res) => {
-    res.render("deck", { title: "Votre deck", deck: req.session.deck });
+    if (req.session.deck.length === 0) {
+      errorMessage = "empty_deck";
+    } else {
+      errorMessage = "";
+    }
+
+    res.render("deck", { title: "Votre deck", deck: req.session.deck, errorMessage });
   },
 
   addCardOnDeck: async (req, res, next) => {
