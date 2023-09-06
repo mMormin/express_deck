@@ -1,4 +1,4 @@
-const database = require("./database");
+const database = require("../db.js");
 
 const dataMapper = {
   getCardsList: async () => {
@@ -63,8 +63,6 @@ const dataMapper = {
   },
 
   getCardsListByValue: async (direction, value) => {
-    console.log(direction);
-
     switch (direction) {
       case "north":
         direction = "value_north";

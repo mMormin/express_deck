@@ -1,5 +1,5 @@
 const e = require("express");
-const dataMapper = require("../dataMapper.js");
+const dataMapper = require("./dataMapper.js");
 
 const mainController = {
   homePage: async (req, res, next) => {
